@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: recycling-management
+    
+  datasource:
+    password: root
+    url: jdbc:mysql://localhost:3307/recycling
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
