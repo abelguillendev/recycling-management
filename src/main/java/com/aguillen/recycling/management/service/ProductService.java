@@ -1,8 +1,8 @@
-package com.aguillen.recyclingmanagement.service;
+package com.aguillen.recycling.management.service;
 
 import java.util.List;
 
-import com.aguillen.recyclingmanagement.entity.Product;
+import com.aguillen.recycling.management.entity.Product;
 
 public interface ProductService {
 

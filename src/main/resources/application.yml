@@ -4,11 +4,25 @@ spring:
     
   datasource:
     password: root
-    url: jdbc:mysql://localhost:3307/recycling
+    url: jdbc:mysql://localhost:3306/recycling
     username: root
     driver-class-name: com.mysql.cj.jdbc.Driver
-    
+
   jpa:
     hibernate:
       ddl-auto: update
     open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+app:
+  name: "@project.name@"
+  description: "@project.description@"
+  version: "@project.version@"

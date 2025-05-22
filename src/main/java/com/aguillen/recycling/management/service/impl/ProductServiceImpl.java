@@ -1,4 +1,4 @@
-package com.aguillen.recyclingmanagement.service.impl;
+package com.aguillen.recycling.management.service.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
-import com.aguillen.recyclingmanagement.entity.Product;
-import com.aguillen.recyclingmanagement.repository.ProductRepository;
-import com.aguillen.recyclingmanagement.service.ProductService;
+import com.aguillen.recycling.management.entity.Product;
+import com.aguillen.recycling.management.repository.ProductRepository;
+import com.aguillen.recycling.management.service.ProductService;
 
 @Service
 public class ProductServiceImpl implements ProductService {

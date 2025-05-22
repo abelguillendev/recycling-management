@@ -1,4 +1,4 @@
-package com.aguillen.recyclingmanagement.entity;
+package com.aguillen.recycling.management.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

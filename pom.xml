@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.3</version>
+		<version>3.4.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.aguillen</groupId>
@@ -13,10 +13,12 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>recycling-management</name>
 	<description>Application to manage a recycling company</description>
+	
 	<properties>
 		<java.version>21</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	
 	<dependencies>
 
 		<dependency>
@@ -48,6 +50,11 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.8.8</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -56,24 +63,6 @@
 
 	<build>
 		<plugins>
-<!--			<plugin>-->
-<!--				<groupId>org.hibernate.orm.tooling</groupId>-->
-<!--				<artifactId>hibernate-enhance-maven-plugin</artifactId>-->
-<!--				<version>${hibernate.version}</version>-->
-<!--				<executions>-->
-<!--					<execution>-->
-<!--						<id>enhance</id>-->
-<!--						<goals>-->
-<!--							<goal>enhance</goal>-->
-<!--						</goals>-->
-<!--						<configuration>-->
-<!--							<enableLazyInitialization>true</enableLazyInitialization>-->
-<!--							<enableDirtyTracking>true</enableDirtyTracking>-->
-<!--							<enableAssociationManagement>true</enableAssociationManagement>-->
-<!--						</configuration>-->
-<!--					</execution>-->
-<!--				</executions>-->
-<!--			</plugin>-->
 			<plugin>
 				<groupId>org.graalvm.buildtools</groupId>
 				<artifactId>native-maven-plugin</artifactId>
@@ -83,6 +72,12 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<resources>
+	        <resource>
+	            <directory>src/main/resources</directory>
+	            <filtering>true</filtering>
+	        </resource>
+	    </resources>
 	</build>
 
 </project>

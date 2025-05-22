@@ -1,4 +1,4 @@
-package com.aguillen.recyclingmanagement.controller;
+package com.aguillen.recycling.management.controller;
 
 import java.util.List;
 
@@ -17,9 +17,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.aguillen.recyclingmanagement.entity.Product;
-import com.aguillen.recyclingmanagement.service.ProductService;
+import com.aguillen.recycling.management.entity.Product;
+import com.aguillen.recycling.management.service.ProductService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 /**
@@ -28,6 +32,7 @@ import jakarta.validation.Valid;
  */
 @RestController
 @RequestMapping("/products")
+@Tag(name = "Product", description = "API for managing products")
 public class ProductController {
 
     /**
@@ -48,6 +53,11 @@ public class ProductController {
      * @return A ResponseEntity containing the created product and HTTP status.
      * @throws ResponseStatusException If there is an error during the creation process.
      */
+	@Operation(summary = "Create a new product")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "201", description = "Product created successfully"),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
 	@PostMapping
     public ResponseEntity<Product> create(@Valid @RequestBody Product product) {
         try {
@@ -68,6 +78,12 @@ public class ProductController {
      * @return A ResponseEntity containing the retrieved product and HTTP status.
      * @throws ResponseStatusException If there is an error during the retrieval process.
      */
+	@Operation(summary = "Get a product by ID")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Product found"),
+        @ApiResponse(responseCode = "404", description = "Product not found"),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
     @GetMapping("/{id}")
     public ResponseEntity<Product> getById(@PathVariable Long id) {
     	try {
@@ -92,6 +108,12 @@ public class ProductController {
      * @return A ResponseEntity containing the updated product and HTTP status.
      * @throws ResponseStatusException If there is an error during the update process.
      */
+	@Operation(summary = "Update an existing product")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Product updated successfully"),
+        @ApiResponse(responseCode = "404", description = "Product not found"),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
     @PutMapping("/{id}")
     public ResponseEntity<Product> update(@PathVariable Long id, @RequestBody Product updatedProduct) {
     	try {
@@ -114,6 +136,12 @@ public class ProductController {
      * @return A ResponseEntity containing the list of all products and HTTP status.
      * @throws ResponseStatusException If there is an error during the retrieval process.
      */
+	@Operation(summary = "Get all products")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Products retrieved successfully"),
+        @ApiResponse(responseCode = "204", description = "No products found"),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
     @GetMapping
     public ResponseEntity<List<Product>> getAll() {
     	try {
@@ -137,6 +165,12 @@ public class ProductController {
      * @return A ResponseEntity containing the deleted product and HTTP status.
      * @throws ResponseStatusException If there is an error during the deletion process.
      */
+	@Operation(summary = "Delete a product by ID")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Product deleted successfully"),
+        @ApiResponse(responseCode = "404", description = "Product not found"),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
     @DeleteMapping("/{id}")
     public ResponseEntity<Product> delete(@PathVariable Long id) {
     	try {
